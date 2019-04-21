@@ -13,7 +13,7 @@ bool is_palindrome(string input)
         else if(int(input[i])>47&&int(input[i])<58) check_num[int(input[i])-23]++;
     }
     int odd=0;
-    for(int i=0; i<26; i++)
+    for(int i=0; i<36; i++)
     {
         if(check_num[i]%2 == 1) odd++;
         if(odd==2) return false;
