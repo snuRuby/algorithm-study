@@ -87,3 +87,5 @@ int main() {
     
     return 0;
 }
+/*If you wanted to, you could create a nearly conforming implementation of vector 
+that provided a push_back with exactly O(1) complexity, rather than amortized O(1) complexity. */
