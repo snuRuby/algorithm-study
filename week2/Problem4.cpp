@@ -51,8 +51,7 @@ void List::showallval() {
 }
 
 int List::getval(int index) {
-	Node* tmpptr = new Node;
-	tmpptr = head;
+	Node* tmpptr = head;
 	for (int i = 0; i < index; ++i) {
 		tmpptr = tmpptr->next;
 	}
