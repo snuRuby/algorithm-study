@@ -34,11 +34,11 @@ int main(){
     char input[30];
     cin.getline(input, 30);
     Node *new_string = new Node(input[0]);
-    for(int i = 1; i<=strlen(input) ; i++ ){
+    for(int i = 1; i<strlen(input) ; i++ ){
         new_string -> Insert(input[i]);
     }
     Node *temp = new_string;
-    while(temp -> next != NULL){
+    while(temp != NULL){
         cout << temp->data << endl;
         temp = temp->next;
     }
@@ -51,10 +51,13 @@ int main(){
 
 bool checkListPalindrome(Node* string){
     Node *compare_point = middleOfList(string);
-    Node *moving_point = middleOfList(string);
+    Node *moving_point = compare_point;
+    if (compare_point->prev->data != moving_point->next->data){
+        moving_point = moving_point->prev;
+    }
 
-    while(moving_point->next != NULL){
-        if(compare_point->prev == moving_point -> next){
+    while(moving_point->next != NULL && compare_point->prev != NULL){
+        if(compare_point->prev->data == moving_point -> next -> data){
             compare_point = compare_point -> prev;
             moving_point = moving_point -> next;
         } else {return false;}
@@ -65,7 +68,7 @@ bool checkListPalindrome(Node* string){
 Node* middleOfList(Node* string){
     Node* fast_one = string;
     Node* slow_one = string;
-    if(fast_one != NULL && fast_one -> next != NULL){
+    while(fast_one != NULL && fast_one -> next != NULL){
         fast_one = fast_one -> next -> next;
         slow_one = slow_one -> next;
     }
