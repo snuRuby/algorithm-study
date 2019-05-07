@@ -3,6 +3,8 @@
 
 using namespace std;
 
+#참조 : https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
+
 struct Node{
     int data;
     struct Node* next;
