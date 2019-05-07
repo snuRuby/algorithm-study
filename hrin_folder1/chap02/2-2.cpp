@@ -23,7 +23,7 @@ struct Node{
     }
 };
 
-int middleOfList(Node* data);
+int countOfList(Node* data);
 Node* nodeKFromBack(int k, int count, Node* start);
 
 int main(){
@@ -45,15 +45,15 @@ int main(){
         cin.clear();
         cin.ignore(__INT_MAX__,'\n');
     }
-    int half = middleOfList(new_data);
-    Node *node_K = nodeKFromBack(k, half, new_data);
+    int count = countOfList(new_data);
+    Node *node_K = nodeKFromBack(k, count, new_data);
     cout << "뒤에서 K번째는 " << node_K->data << "입니다. "<< endl;
 
     cout << "확인해봅시다. "<< endl;
 
     Node *temp = new_data;
-    for(int i = 0; i< first - k; i++){
-        temp = temp -> next;
+    for(int i = 0; i< first - k ; i++){
+        temp = temp -> next; 
     }
     cout << temp -> data;
 
@@ -63,12 +63,10 @@ int main(){
     return 0;
 }
 
-int middleOfList(Node* data){
+int countOfList(Node* data){
     int count = 0;
-    Node* fast_one = data;
     Node* slow_one = data;
-    while(fast_one != NULL && fast_one -> next != NULL){
-        fast_one = fast_one -> next -> next;
+    while(slow_one -> next != NULL){
         slow_one = slow_one -> next;
         count++;
     }
@@ -77,7 +75,7 @@ int middleOfList(Node* data){
 
 Node* nodeKFromBack(int k, int count, Node* start){
     Node *temp = start;
-    for(int i=0; i<2*count -k ; i++){
+    for(int i=0; i<count -k ; i++){
         temp = temp -> next;
     }
     return temp;
