@@ -46,7 +46,7 @@ int main(){
     if(isPalindrome){
         cout << "This word is palindrome";
     } else {cout<< "This word is not palindrome";}
-    
+    return 0;
 }
 
 bool checkListPalindrome(Node* string){
